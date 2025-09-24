@@ -128,3 +128,25 @@ function removeDuplicats(arr) {
 }
 
 console.log(removeDuplicats(numbers));
+
+const uniqNums = [5, 8, 2, 9, 1];
+
+function secondLargestNum(nums) {
+  if (!Array.isArray(nums) || nums.length === 0) {
+    return "Your input must be a non-empty array of numbers";
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    let currentBubble = nums[i];
+    for (let j = 0; j < nums.length - 1 - i; j++) {
+      if (nums[j] > nums[j + 1]) {
+        let temp = nums[j + 1];
+        nums[j + 1] = nums[j];
+        nums[j] = temp;
+      }
+    }
+  }
+  return `The second largest number is: ${nums[nums.length - 2]}`;
+}
+
+console.log(secondLargestNum(uniqNums));
