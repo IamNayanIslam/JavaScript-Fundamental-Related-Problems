@@ -150,3 +150,35 @@ function secondLargestNum(nums) {
 }
 
 console.log(secondLargestNum(uniqNums));
+
+const arr = [3, 5, 2, 3, 8, 5, 6, 3, 2, 4, 8, 3];
+
+const countAppearance = (nums) => {
+  const count = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (count[arr[i]]) {
+      count[arr[i]] += 1;
+    } else {
+      count[arr[i]] = 1;
+    }
+  }
+  return count;
+};
+
+console.log(countAppearance(arr)); // { '2': 2, '3': 4, '4': 1, '5': 2, '6': 1, '8': 2 }
+
+const moveByK = (arr, k) => {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return "Your input must a non-empty array!";
+  }
+
+  const n = arr.length;
+  k = k % n;
+  const movedPart = arr.slice(n - k);
+  const remainingPart = arr.slice(0, n - k);
+
+  return movedPart.concat(remainingPart);
+};
+
+console.log(moveByK([1, 2, 3, 4, 5], 7));
