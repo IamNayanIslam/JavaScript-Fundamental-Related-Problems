@@ -175,10 +175,14 @@ const moveByK = (arr, k) => {
 
   const n = arr.length;
   k = k % n;
+
+  if (k === 0) {
+    return arr;
+  }
   const movedPart = arr.slice(n - k);
   const remainingPart = arr.slice(0, n - k);
 
   return movedPart.concat(remainingPart);
 };
 
-console.log(moveByK([1, 2, 3, 4, 5], 7));
+console.log(moveByK([1, 2, 3, 4, 5], 5));

@@ -1,20 +1,19 @@
-const moveByK = (arr) => {
+const moveByK = (arr, k) => {
   if (!Array.isArray(arr) || arr.length === 0) {
-    return "Your input must be a non empty array";
+    return "Your input must a non-empty array!";
   }
 
-  let n = arr.length;
-  let temp = arr[n - 1];
+  const n = arr.length;
+  k = k % n;
 
-  for (let i = n - 2; i >= 0; i--) {
-    arr[i + 1] = arr[i];
+  if (k === 0) {
+    return arr;
   }
 
-  arr[0] = temp;
+  const movedPart = arr.slice(n - k);
+  const remainingPart = arr.slice(0, n - k);
 
-  return arr;
+  return movedPart.concat(remainingPart);
 };
 
-let my_arr = [1, 2, 3, 4, 5];
-
-console.log(moveByK(my_arr));
+console.log(moveByK([1, 2, 3, 4, 5], 5));
